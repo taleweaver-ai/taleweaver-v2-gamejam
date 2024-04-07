@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import { useState, useEffect, useCallback } from "react";
 import { emptyWorld } from "@/dummies";
 import { showLoader, hideLoader } from "@/utils/loader";
+import WalletConnector from "@/components/WalletConnector/WalletConnector";
 
 import { MadeDecisionProps } from "@/types/decision";
 
@@ -61,7 +62,7 @@ export default function World() {
   const readWorld = useReadWorld();
   useEffect(() => {
     if (worldId) {
-      const world = readWorld(worldId).then(async (worldPromise) => {
+      readWorld(worldId).then(async (worldPromise) => {
         const worldData = await worldPromise;
         console.log(worldData);
         if (worldData) {
@@ -79,7 +80,8 @@ export default function World() {
       <div className="container text-center">
         <CoverImage src={world.dalleUrl} alt={world.title} title={world.title} playButton={true} />
         <p className="py-2 text-start">{world.description || <Skeleton count={5} />}</p>
-        <a href="." class="btn btn-primary my-3">
+        <WalletConnector />
+        <a href="http://localhost:3001/" className="btn btn-primary my-3">
           Load an NFT from your wallet
         </a>
         <h2 className="text-center">Or choose your avatar</h2>
