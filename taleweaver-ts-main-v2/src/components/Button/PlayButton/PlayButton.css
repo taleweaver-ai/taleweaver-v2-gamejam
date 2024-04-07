@@ -1,0 +1,33 @@
+.play-btn-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  opacity: 100%;
+  /* background-color: rgba(var(--bs-dark-rgb), 0.7); */
+  top: 0;
+  left: 0
+}
+
+.play-btn-container button {
+  border: none;
+  background-color: transparent;
+}
+
+.play-btn svg {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  transform: translate(-41px, -41px);
+}
+
+.play-btn svg * {
+  stroke: var(--bs-body-color);
+  transition: stroke-width 0.25s ease-in-out;
+}
+
+.play-btn:hover svg * {
+  stroke-width: 5;
+}

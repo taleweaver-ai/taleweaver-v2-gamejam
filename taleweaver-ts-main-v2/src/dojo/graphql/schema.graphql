@@ -1,0 +1,51 @@
+query getWorld($assistantId: felt252) {
+  seedModels(where: {assistantId: $assistantId}) {
+    edges {
+      node {
+        assistantId,
+        cidA,
+        cidB,
+      }
+    }
+  }
+}
+
+query getWorlds {
+  seedModels {
+    edges {
+      node {
+        assistantId,
+        cidA,
+        cidB,
+      }
+    }
+  }
+}
+
+query getDecisions($threadId: felt252) {
+  decisionModels(where: { threadId: $threadId }) {
+    edges {
+      node {
+        runId,
+        threadId,
+        assistantId,
+        cidA,
+        cidB,
+      }
+    }
+  }
+}
+
+# query getAvatars($assistantId: felt252) {
+#   avatarModels(where: {assistantId: $assistantId}) {
+#     edges {
+#       node {
+#         assistantId: felt252,   
+#         name: felt252,  
+#         alias: felt252,
+#         descriptionA: felt252,
+#         descriptionB: felt252
+#       }
+#     }
+#   }
+# }

@@ -1,0 +1,36 @@
+@keyframes gainOpacity { 
+  0% { 
+    opacity: 0; /* Empieza completamente transparente */ 
+    filter: drop-shadow(0 0 2px #FFD8B5) /* Inicio sutil del brillo */ 
+            drop-shadow(0 0 4px #FFAD66); /* Color del brillo */ 
+  } 
+  100% { 
+    opacity: 1; /* Termina completamente opaco */ 
+    filter: drop-shadow(0 0 5px #FFD8B5) /* Brillo más intenso hacia el final */ 
+            drop-shadow(0 0 10px #FFD8B5) 
+            drop-shadow(0 0 15px #FFAD66) 
+            drop-shadow(0 0 20px #FFAD66) 
+            drop-shadow(0 0 25px #FFAD66); 
+  } 
+} 
+ 
+.loader-container { 
+  position: sticky; 
+  bottom: 0;
+  background-color: #212529;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  display: none;
+  /* display: flex; */
+  align-items: center;
+  overflow: hidden; 
+} 
+ 
+.loader-container img { 
+  width: 100%; 
+  height: auto; 
+  animation: gainOpacity 3s ease infinite; 
+  max-width: 40rem;
+}
+

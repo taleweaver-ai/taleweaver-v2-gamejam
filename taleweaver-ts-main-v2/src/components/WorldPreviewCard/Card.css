@@ -1,0 +1,26 @@
+.story-preview-card {
+  transition: box-shadow 0.15s ease-in-out;
+}
+.story-preview-card:hover {
+  cursor: pointer;
+}
+
+.story-preview-card .card-footer {
+  cursor: initial;
+  background-color: inherit;
+  border: none;
+  padding-top: 0;
+}
+
+
+.theme-light .story-preview-card:hover {
+  box-shadow: 2px 2px 5px lightgray;
+}
+
+.theme-dark .story-preview-card:hover {
+  box-shadow: 2px 2px 5px black;
+}
+
+.story-preview-card .cover-image-container h1 {
+  font-size: 1.25rem;
+}

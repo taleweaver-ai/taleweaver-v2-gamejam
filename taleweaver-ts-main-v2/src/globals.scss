@@ -1,0 +1,57 @@
+// Your variable overrides
+$theme-colors: (
+  "primary": #ECBA81,
+  "primary-text-emphasis": #ffc09d,
+);
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+
+[data-bs-theme=light] {
+  --dark-red: #91251D;
+}
+
+[data-bs-theme=dark] {
+  --dark-red: #ECBA81;
+}
+
+.color-primary {
+  color: var(--bs-primary-text-emphasis);
+}
+
+.color-dark-red {
+  color: var(--dark-red);
+}
+
+
+/* Navbar */
+.theme-light .navbar-container {
+  background-image: linear-gradient(180deg, rgba(100, 100, 100, .2) 10%, transparent);
+}
+
+.theme-dark .navbar-container {
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 10%, transparent);
+}
+
+/* Skeleton styling in dark mode */
+.theme-dark .react-loading-skeleton {
+  --base-color: #111112;
+  --highlight-color: #212529;
+}
+
+:root {
+  --bs-btn-color: var(--dark-red);
+  --bs-btn-border-color: var(--dark-red);
+  --bs-btn-hover-color: var(--dark-red);
+  --bs-btn-hover-bg: var(--dark-red);
+  --bs-btn-hover-border-color: var(--dark-red);
+  --bs-btn-active-bg: var(--dark-red);
+  --bs-btn-active-border-color: var(--dark-red);
+  --bs-btn-disabled-color: var(--dark-red);
+  --bs-btn-disabled-border-color: var(--dark-red);
+}
+
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 0.25rem rgba(255, 192, 157, 0.4);
+}
