@@ -13,7 +13,7 @@ import { showLoader, hideLoader } from "@/utils/loader";
 
 import { MadeDecisionProps } from "@/types/decision";
 
-import { imgUrlDummy, avatarDummy, assistantDummy } from "@/dummies"
+import { imgUrlDummy, avatarDummy, assistantDummy } from "@/dummies";
 
 function formatAvatarToOptions(avatars: AvatarProps[]) {
   return avatars.map(({ id, name, alias, description }: AvatarProps) => {
@@ -22,8 +22,8 @@ function formatAvatarToOptions(avatars: AvatarProps[]) {
       value: id,
       title: `${name} (${alias})`,
       description: description,
-    }
-  })
+    };
+  });
 }
 const dummyAvatars = formatAvatarToOptions(avatarDummy);
 
@@ -31,22 +31,23 @@ export default function World() {
   const getWorldId = () => {
     const pathname = window.location.pathname;
     const worldId = pathname.split("/")[2];
-    return worldId
-  }
+    return worldId;
+  };
   const onPlay = (event: any) => {
     event.preventDefault();
     event.stopPropagation();
     const form = event.currentTarget;
     const worldId = getWorldId();
     const avatarId = form.elements["avatars"].value;
-    const avatar = avatars.find(avatar => String(avatar.id) === String(avatarId));
+    const avatar = avatars.find((avatar) => String(avatar.id) === String(avatarId));
     if (avatar)
-      playWorld({ assistant: worldId, avatar: avatar })
-        .then(({ thread, run }: MadeDecisionProps) => {
-          const pathname = `/world/${worldId}/play/${thread}/${run}`
+      playWorld({ assistant: worldId, avatar: avatar }).then(
+        ({ thread, run }: MadeDecisionProps) => {
+          const pathname = `/world/${worldId}/play/${thread}/${run}`;
           window.location.pathname = pathname;
-        })
-  }
+        }
+      );
+  };
 
   useEffect(showLoader, []);
 
@@ -60,30 +61,30 @@ export default function World() {
   const readWorld = useReadWorld();
   useEffect(() => {
     if (worldId) {
-      const world = readWorld(worldId).then(async worldPromise => {
+      const world = readWorld(worldId).then(async (worldPromise) => {
         const worldData = await worldPromise;
-        console.log(worldData)
+        console.log(worldData);
         if (worldData) {
           const { avatars, ...world } = worldData;
           setWorld(world);
           setAvatars(avatars);
           hideLoader();
         }
-      })
+      });
     }
   }, [worldId]);
 
   return (
     <Form noValidate validated={false} onSubmit={onPlay} id="play-form">
-      <div className="container">
+      <div className="container text-center">
         <CoverImage src={world.dalleUrl} alt={world.title} title={world.title} playButton={true} />
-        <p className="py-2">
-          {world.description || <Skeleton count={5} />}
-        </p>
-        <h2 className="text-center">Choose your avatar</h2>
+        <p className="py-2 text-start">{world.description || <Skeleton count={5} />}</p>
+        <a href="." class="btn btn-primary my-3">
+          Load an NFT from your wallet
+        </a>
+        <h2 className="text-center">Or choose your avatar</h2>
         <RadioCardGroup id="avatars" name="avatars" options={formatAvatarToOptions(avatars)} />
       </div>
     </Form>
   );
 }
-
