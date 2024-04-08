@@ -1,0 +1,109 @@
+[world]
+kind = "Contract"
+class_hash = "0x799bc4e9da10bfb3dd88e6f223c9cfbf7745435cd14f5d69675ea448e578cd"
+original_class_hash = "0x799bc4e9da10bfb3dd88e6f223c9cfbf7745435cd14f5d69675ea448e578cd"
+abi = "abis/deployments/dojo_world_world.json"
+address = "0x21e63e6e063b19f825e2b8c16c351b891d7c2e0b673d7345cece3913e8e2952"
+transaction_hash = "0x78cb1612393e07baca4d3c9c9c92eac2a994bec99c512704ba8b8ef9a68e05f"
+block_number = 3
+seed = "taleweaver"
+name = "dojo::world::world"
+
+[base]
+kind = "Class"
+class_hash = "0x679177a2cb757694ac4f326d01052ff0963eac0bc2a17116a2b87badcdf6f76"
+original_class_hash = "0x679177a2cb757694ac4f326d01052ff0963eac0bc2a17116a2b87badcdf6f76"
+name = "dojo::base::base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x5786a9a9c75f8569ccd2c8d7c8478a68bf5e5774212768726ffa5375e0b83e8"
+class_hash = "0x749f5243a6a9032a4eb28ab17976fa3112c7466b5aea0134159a7471cc739"
+original_class_hash = "0x749f5243a6a9032a4eb28ab17976fa3112c7466b5aea0134159a7471cc739"
+base_class_hash = "0x679177a2cb757694ac4f326d01052ff0963eac0bc2a17116a2b87badcdf6f76"
+abi = "abis/deployments/contracts/taleweaver_systems_construct_construct.json"
+reads = []
+writes = []
+computed = []
+name = "taleweaver::systems::construct::construct"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x2b165589da1cd4c796eabcabc6d11f527651676ef424c17cd4d75063d730fba"
+class_hash = "0x5bb782effeacb9fd44d51e8c483966c506b6089049b1528752d007465a82548"
+original_class_hash = "0x5bb782effeacb9fd44d51e8c483966c506b6089049b1528752d007465a82548"
+base_class_hash = "0x679177a2cb757694ac4f326d01052ff0963eac0bc2a17116a2b87badcdf6f76"
+abi = "abis/deployments/contracts/taleweaver_systems_play_play.json"
+reads = []
+writes = []
+computed = []
+name = "taleweaver::systems::play::play"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x10fd68e6fa48741c9795c73f95878e9859b3d1cdded6c0ec9807cc44eca6e85"
+original_class_hash = "0x10fd68e6fa48741c9795c73f95878e9859b3d1cdded6c0ec9807cc44eca6e85"
+abi = "abis/deployments/models/taleweaver_models_decision_decision.json"
+name = "taleweaver::models::decision::decision"
+
+[[models.members]]
+name = "assistantId"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "player"
+type = "ContractAddress"
+key = false
+
+[[models.members]]
+name = "counter"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "threadId"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "runId"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "cidA"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "cidB"
+type = "felt252"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x1ed365365ebe089ce5065a91545528bbf472dfdef1e7c84b28c0719d1d8e7fd"
+original_class_hash = "0x1ed365365ebe089ce5065a91545528bbf472dfdef1e7c84b28c0719d1d8e7fd"
+abi = "abis/deployments/models/taleweaver_models_seed_seed.json"
+name = "taleweaver::models::seed::seed"
+
+[[models.members]]
+name = "assistantId"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "creator"
+type = "ContractAddress"
+key = false
+
+[[models.members]]
+name = "cidA"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "cidB"
+type = "felt252"
+key = false

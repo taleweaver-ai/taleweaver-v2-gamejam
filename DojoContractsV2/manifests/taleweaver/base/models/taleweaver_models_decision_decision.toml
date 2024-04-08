@@ -1,0 +1,40 @@
+kind = "DojoModel"
+class_hash = "0x10fd68e6fa48741c9795c73f95878e9859b3d1cdded6c0ec9807cc44eca6e85"
+original_class_hash = "0x10fd68e6fa48741c9795c73f95878e9859b3d1cdded6c0ec9807cc44eca6e85"
+abi = "manifests/taleweaver/abis/base/models/taleweaver_models_decision_decision.json"
+name = "taleweaver::models::decision::decision"
+
+[[members]]
+name = "assistantId"
+type = "felt252"
+key = true
+
+[[members]]
+name = "player"
+type = "ContractAddress"
+key = false
+
+[[members]]
+name = "counter"
+type = "felt252"
+key = false
+
+[[members]]
+name = "threadId"
+type = "felt252"
+key = false
+
+[[members]]
+name = "runId"
+type = "felt252"
+key = false
+
+[[members]]
+name = "cidA"
+type = "felt252"
+key = false
+
+[[members]]
+name = "cidB"
+type = "felt252"
+key = false
