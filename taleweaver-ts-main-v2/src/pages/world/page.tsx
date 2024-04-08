@@ -10,22 +10,36 @@ import Form from "react-bootstrap/Form";
 import { useState, useEffect, useCallback } from "react";
 import { emptyWorld } from "@/dummies";
 import { showLoader, hideLoader } from "@/utils/loader";
-import WalletConnector from "@/components/WalletConnector/WalletConnector";
 
 import { MadeDecisionProps } from "@/types/decision";
 
 import { imgUrlDummy, avatarDummy, assistantDummy } from "@/dummies";
-import DisplayNFTs from "@/components/WalletConnector/DisplayNft";
+
+interface NFT {
+  metadata: {
+    normalized: {
+      name?: string;
+      description?: string;
+      image?: string;
+    };
+  };
+  owner: string;
+}
 
 function formatAvatarToOptions(avatars: AvatarProps[]) {
-  return avatars.map(({ id, name, alias, description }: AvatarProps) => {
-    return {
-      id: id,
-      value: id,
-      title: `${name} (${alias})`,
-      description: description,
-    };
-  });
+  return JSON.parse(JSON.stringify(avatars)).map(
+    ({ id, name, alias, description, imgSrc }: AvatarProps) => {
+      return {
+        id: id,
+        name: name,
+        alias: alias,
+        value: id,
+        description: description,
+        imgSrc: imgSrc,
+        title: alias ? `${name} (${alias})` : name,
+      };
+    }
+  );
 }
 const dummyAvatars = formatAvatarToOptions(avatarDummy);
 
@@ -45,6 +59,8 @@ export default function World() {
     if (avatar)
       playWorld({ assistant: worldId, avatar: avatar }).then(
         ({ thread, run }: MadeDecisionProps) => {
+          if (avatar.imgSrc) localStorage.setItem("nftSrc", avatar.imgSrc);
+
           const pathname = `/world/${worldId}/play/${thread}/${run}`;
           window.location.pathname = pathname;
         }
@@ -79,6 +95,42 @@ export default function World() {
   // Wallet address to show NFTs
   const walletAddress = localStorage.getItem("walletAddress");
 
+  const fetchNFTs = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/nfts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ address: walletAddress }),
+      });
+
+      if (!response.ok) throw new Error("Network response was not ok.");
+
+      const data = await response.json();
+      const nfts = (data.result || []).map((nft: NFT) => {
+        const name = nft.metadata.normalized.name;
+        const description = nft.metadata.normalized.description;
+        const imgSrc = nft.metadata.normalized.image;
+        return {
+          id: name,
+          name: name,
+          description: description,
+          imgSrc: imgSrc,
+        };
+      });
+      console.log(avatars);
+
+      setAvatars([...nfts, ...avatars]);
+    } catch (error) {
+      console.error("Error fetching NFTs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNFTs();
+  }, [walletAddress]);
+
   return (
     <Form noValidate validated={false} onSubmit={onPlay} id="play-form">
       <div className="container text-center">
@@ -90,7 +142,6 @@ export default function World() {
           playButton={true}
         />
         <p className="py-2 text-start">{world.description || <Skeleton count={5} />}</p>
-        {walletAddress && <DisplayNFTs walletAddress={walletAddress} />}
         <h2 className="text-center">Or choose your avatar</h2>
         <RadioCardGroup id="avatars" name="avatars" options={formatAvatarToOptions(avatars)} />
       </div>

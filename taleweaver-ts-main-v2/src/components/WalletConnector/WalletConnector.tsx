@@ -38,6 +38,7 @@ export default function WalletConnector() {
       await disconnect();
       setWalletConnection(null);
       localStorage.removeItem("walletAddress");
+      localStorage.removeItem("nftSrc");
       console.log("Wallet disconnected");
     } catch (error) {
       console.error("Failed to disconnect wallet:", error);
