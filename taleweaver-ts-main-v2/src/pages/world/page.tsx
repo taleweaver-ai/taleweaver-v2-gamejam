@@ -15,6 +15,7 @@ import WalletConnector from "@/components/WalletConnector/WalletConnector";
 import { MadeDecisionProps } from "@/types/decision";
 
 import { imgUrlDummy, avatarDummy, assistantDummy } from "@/dummies";
+import DisplayNFTs from "@/components/WalletConnector/DisplayNft";
 
 function formatAvatarToOptions(avatars: AvatarProps[]) {
   return avatars.map(({ id, name, alias, description }: AvatarProps) => {
@@ -75,15 +76,21 @@ export default function World() {
     }
   }, [worldId]);
 
+  // Wallet address to show NFTs
+  const walletAddress = localStorage.getItem("walletAddress");
+
   return (
     <Form noValidate validated={false} onSubmit={onPlay} id="play-form">
       <div className="container text-center">
-        <CoverImage src={world.dalleUrl} alt={world.title} title={world.title} playButton={true} />
+        <CoverImage
+          id={world.id}
+          src={world.dalleUrl}
+          alt={world.title}
+          title={world.title}
+          playButton={true}
+        />
         <p className="py-2 text-start">{world.description || <Skeleton count={5} />}</p>
-        <WalletConnector />
-        <a href="http://localhost:3001/" className="btn btn-primary my-3">
-          Load an NFT from your wallet
-        </a>
+        {walletAddress && <DisplayNFTs walletAddress={walletAddress} />}
         <h2 className="text-center">Or choose your avatar</h2>
         <RadioCardGroup id="avatars" name="avatars" options={formatAvatarToOptions(avatars)} />
       </div>

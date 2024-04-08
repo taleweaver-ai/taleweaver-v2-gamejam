@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { Card } from "react-bootstrap";
 
 // Definimos los tipos para los props.
 interface DisplayNFTsProps {
@@ -17,7 +18,7 @@ interface NFT {
   owner: string;
 }
 
-const DisplayNFTs: React.FC<DisplayNFTsProps> = ({ walletAddress }) => {
+export default function DisplayNFTs({ walletAddress }: DisplayNFTsProps) {
   const [nfts, setNfts] = useState<NFT[]>([]);
 
   const fetchNFTs = async () => {
@@ -40,31 +41,27 @@ const DisplayNFTs: React.FC<DisplayNFTsProps> = ({ walletAddress }) => {
     }
   };
 
+  useEffect(() => {
+    fetchNFTs();
+  }, []);
+
   return (
-    <div>
-      <button onClick={fetchNFTs}>Load My NFTs</button>
+    <div className="d-flex flex-wrap">
       {nfts.length > 0 ? (
         nfts.map((nft, index) => (
-          <div key={index}>
-            {/* Renderiza los datos de cada NFT */}
-            <p>Name: {nft.metadata.normalized.name || "No name provided"}</p>
-            <p>Description: {nft.metadata.normalized.description || "No description provided"}</p>
-            {/* Muestra la imagen si está disponible */}
-            <p>Owner: {nft.owner}</p>
-            {nft.metadata.normalized.image && (
-              <img
-                src={nft.metadata.normalized.image}
-                alt="NFT"
-                style={{ width: "200px", height: "200px" }}
-              />
-            )}
-          </div>
+          <Card key={index}>
+            <Card.Img
+              variant="top mx-auto mt-3"
+              src={nft.metadata.normalized.image}
+              alt="NFT"
+              style={{ width: "200px", height: "200px" }}
+            />
+            <Card.Body>{nft.metadata.normalized.name}</Card.Body>
+          </Card>
         ))
       ) : (
         <p>No NFTs found or not loaded.</p>
       )}
     </div>
   );
-};
-
-export default DisplayNFTs;
+}

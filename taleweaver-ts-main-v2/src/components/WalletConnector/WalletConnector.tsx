@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { connect, disconnect } from "starknetkit";
-import { Button } from "react-bootstrap";
 
 interface IWalletConnection {
   wallet?: any;
-  address?: string;
+  address: string;
 }
 
 export default function WalletConnector() {
-  const [walletConnection, setWalletConnection] = useState<IWalletConnection | null>(null);
+  const storedAddress = localStorage.getItem("walletAddress");
+  const [walletConnection, setWalletConnection] = useState<IWalletConnection | null>(
+    storedAddress ? { address: storedAddress } : null
+  );
 
   const handleConnect = async (event) => {
     event.preventDefault();
@@ -20,6 +22,7 @@ export default function WalletConnector() {
           wallet: result.wallet,
           address: address,
         });
+        localStorage.setItem("walletAddress", address);
         console.log("Wallet connected:", result, "Address:", address);
       } else {
         console.error("No wallet found in connection result.");
@@ -34,6 +37,7 @@ export default function WalletConnector() {
     try {
       await disconnect();
       setWalletConnection(null);
+      localStorage.removeItem("walletAddress");
       console.log("Wallet disconnected");
     } catch (error) {
       console.error("Failed to disconnect wallet:", error);
