@@ -13,7 +13,7 @@ const app = express();
 // Usa cors para permitir todas las solicitudes cruzadas
 // Para un ambiente de producción, querrás configurar esto para permitir solo ciertos orígenes
 const corsOptions = {
-    origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3001', // Origen por defecto para desarrollo
+    origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3001', // Origen por defecto para desarrollo,poner la direccion en la que se este lanzando el frontend
 };
 
 app.use(cors(corsOptions));
