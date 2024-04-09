@@ -76,7 +76,7 @@ Follow these steps to set up the server:
    VITE_CORS_PROXY=
    ```
 
-   All this information has to be added to the .env file in the root of the taleweaver-ts-main-v2 directory.
+   All this information has to be added to the `.env` file in the root of the taleweaver-ts-main-v2 directory.
    
    Allow CORS anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
