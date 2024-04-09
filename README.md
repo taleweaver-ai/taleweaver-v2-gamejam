@@ -61,19 +61,19 @@ Follow these steps to set up the server:
       -Information obtained from generating a world using Dojo, which has this information:
       
    ``` 
-           VITE_MASTER_ACCOUNT_ADDRESS=
-           VITE_MASTER_ACCOUNT_PRIVATE_KEY=
-           VITE_MASTER_ACCOUNT_PUBLIC_KEY=
-           VITE_PUBLIC_TORII=
-           VITE_PUBLIC_RPC=
+   VITE_MASTER_ACCOUNT_ADDRESS=
+   VITE_MASTER_ACCOUNT_PRIVATE_KEY=
+   VITE_MASTER_ACCOUNT_PUBLIC_KEY=
+   VITE_PUBLIC_TORII=
+   VITE_PUBLIC_RPC=
    ```
    
       -And the API_KEYS part that has to be provided by the user and has to have this structure:
    ```
-          VITE_OPENAI_API_KEY=
-          VITE_PINATA_JWT=
-          VITE_PINATA_URL=
-          VITE_CORS_PROXY=
+   VITE_OPENAI_API_KEY=
+   VITE_PINATA_JWT=
+   VITE_PINATA_URL=
+   VITE_CORS_PROXY=
    ```
 
    All this information has to be added to the .env file in the root of the taleweaver-ts-main-v2 directory.
