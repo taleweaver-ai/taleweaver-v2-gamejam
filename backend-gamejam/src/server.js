@@ -23,9 +23,9 @@ app.use(bodyParser.json());
 app.post('/nfts', async (req, res) => {
     const { address } = req.body;
     const apiKey = process.env.ARK_API_KEY;
-    const url = `https://api.arkproject.dev/v1/owners/${address}/tokens?contract_address=0x0169e971d146ccf8f5e88f2b12e2e6099663fb56e42573479f2aee93309982f8`;
-    
-
+    const url = `https://api.arkproject.dev/v1/owners/${address}/tokens`;
+    // https://api.arkproject.dev/v1/owners/${address}/tokens
+    //https://api.arkproject.dev/v1/owners/${address}/tokens?contract_address=0x0169e971d146ccf8f5e88f2b12e2e6099663fb56e42573479f2aee93309982f8
     try {
         const response = await fetch(url, {
             method: 'GET',
