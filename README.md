@@ -56,7 +56,19 @@ Follow these steps to set up the server:
 
 4. **Add .env File and allow CORSanywhere:**
 
-   Similar to the backend setup, an `.env` file is needed for the frontend. You can contact us to get the keys or add your own VITE_PINATA_JWT and VITE_OPENAI_API_KEY.
+   Similar to the backend setup, an `.env` file is needed for the frontend. The .env of this part of the project is divided in two:
+      -Information obtained from generating a world using Dojo, which has this information:
+   ```.env
+           VITE_MASTER_ACCOUNT_ADDRESS=
+           VITE_MASTER_ACCOUNT_PRIVATE_KEY=
+           VITE_MASTER_ACCOUNT_PUBLIC_KEY=
+           VITE_PUBLIC_TORII=
+           VITE_PUBLIC_RPC=
+   ```
+   
+      -And the API_KEYS part that has to be provided by the user and has to have this structure:
+
+   All this information has to be added to the .env file in the root of the taleweaver-ts-main-v2 directory.
    
    Allow CORS anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
