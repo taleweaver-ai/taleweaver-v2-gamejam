@@ -58,7 +58,7 @@ Follow these steps to set up the server:
 
    Similar to the backend setup, an `.env` file is needed for the frontend. The .env of this part of the project is divided in two:
 
-      -Information obtained from generating a world using Dojo, which has this information:
+      -Information obtained from generating a world using Dojo and slot, which has this information:
       
    ``` 
    VITE_MASTER_ACCOUNT_ADDRESS=
