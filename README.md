@@ -54,9 +54,10 @@ Follow these steps to set up the server:
    bun install
    ```
 
-4. **Add .env File:**
+4. **Add .env File and allow CORSanywhere:**
 
    Similar to the backend setup, an `.env` file is needed for the frontend. You can contact us to get the keys or add your own VITE_PINATA_JWT and VITE_OPENAI_API_KEY.
+   Allow CORS anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
 5. **Start Development:**
 
