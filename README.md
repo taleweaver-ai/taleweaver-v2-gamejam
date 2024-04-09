@@ -31,7 +31,7 @@ Follow these steps to set up the server:
    Example `.env` content:
 
    ```
-   API_KEY=your_api_key_here
+   ARK_API_KEY=your_api_key_here
    ```
 
    To start the server, run:
