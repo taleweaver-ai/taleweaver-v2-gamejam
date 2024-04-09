@@ -28,7 +28,7 @@ Follow these steps to set up the server:
 
    An `.env` file is required to configure API keys and other important settings. You can contact us to get the keys or you can add your own.
 
-   Example `.env` content:
+   Example `.env` content which has to be in the backend-gamejam directory root:
 
    ```
    ARK_API_KEY=your_api_key_here
