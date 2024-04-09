@@ -51,7 +51,7 @@ Follow these steps to set up the server:
    If there are conflicts while installing dependencies, run:
 
    ```bash
-   npm install --legacy-peer-deps
+   bun install
    ```
 
 4. **Add .env File:**
@@ -63,7 +63,7 @@ Follow these steps to set up the server:
    To start the development environment, run:
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 This README provides a step-by-step guide on how to clone, set up the backend, and configure the frontend of the taleweaver-v2-gamejam project. Ensure you follow the instructions carefully to avoid setup errors.
