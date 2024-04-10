@@ -67,6 +67,8 @@ Follow these steps to set up the server:
    VITE_PUBLIC_TORII=
    VITE_PUBLIC_RPC=
    ```
+   You can look at the documentation on how to deploy a dojo world here: https://book.dojoengine.org/tutorial/deploy-using-slot/main
+
    
       -And the API_KEYS part that has to be provided by the user and has to have this structure:
    ```
