@@ -1,4 +1,4 @@
-# taleweaver-v2-gamejam
+# Tale Weaver
 
 <img width="1280" alt="blobertselection" src="https://github.com/taleweaver-ai/taleweaver-v2-gamejam/assets/90188544/44516438-7dce-46b8-8cb8-0bcda8da6dbc">
 
