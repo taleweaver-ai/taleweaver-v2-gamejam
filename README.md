@@ -1,7 +1,10 @@
 # taleweaver-v2-gamejam
+
+<img width="1280" alt="blobertselection" src="https://github.com/taleweaver-ai/taleweaver-v2-gamejam/assets/90188544/44516438-7dce-46b8-8cb8-0bcda8da6dbc">
+
 ![image](https://github.com/taleweaver-ai/taleweaver-v2-gamejam/assets/90188544/7453a5a9-8f39-4f89-86ee-bb0713c623ed)
 ![image](https://github.com/taleweaver-ai/taleweaver-v2-gamejam/assets/90188544/2b2e3c43-b3a1-4b5b-b06b-edf93c24c34b)
-<img width="1280" alt="blobertselection" src="https://github.com/taleweaver-ai/taleweaver-v2-gamejam/assets/90188544/27b03f98-7115-4526-8e9e-4ac1b064454b">
+
 
 
 ## Warning
