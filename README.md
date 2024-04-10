@@ -45,13 +45,7 @@ Follow these steps to set up the server:
 3. **Open a New Terminal and Navigate to the Project Root:**
 
    ```bash
-   cd taleweaver-ts-main-v2 && npm install
-   ```
-
-   If there are conflicts while installing dependencies, run:
-
-   ```bash
-   bun install
+   cd taleweaver-ts-main-v2 && bun install
    ```
 
 4. **Add .env File and allow CORSanywhere:**
