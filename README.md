@@ -74,7 +74,7 @@ Follow these steps to set up the server:
 
    All this information has to be added to the `.env` file in the root of the taleweaver-ts-main-v2 directory.
    
-   Allow CORS anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
+   Allow CORS-anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
 6. **Start Development:**
 
