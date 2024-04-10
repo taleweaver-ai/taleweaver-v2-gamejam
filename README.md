@@ -28,10 +28,10 @@ Follow these steps to set up the server:
 
    An `.env` file is required to configure API keys and other important settings. You can contact us to get the keys or you can add your own.
 
-   Example `.env` content:
+   Example `.env` content which has to be in the backend-gamejam directory root:
 
    ```
-   API_KEY=your_api_key_here
+   ARK_API_KEY=your_api_key_here
    ```
 
    To start the server, run:
@@ -45,25 +45,43 @@ Follow these steps to set up the server:
 3. **Open a New Terminal and Navigate to the Project Root:**
 
    ```bash
-   cd taleweaver-ts-main-v2 && npm install
+   cd taleweaver-ts-main-v2 && bun install
    ```
 
-   If there are conflicts while installing dependencies, run:
+4. **Add .env File and allow CORSanywhere:**
 
-   ```bash
-   npm install --legacy-peer-deps
+   Similar to the backend setup, an `.env` file is needed for the frontend. The .env of this part of the project is divided in two:
+
+      -Information obtained from generating a world using Dojo and slot, which has this information:
+      
+   ``` 
+   VITE_MASTER_ACCOUNT_ADDRESS=
+   VITE_MASTER_ACCOUNT_PRIVATE_KEY=
+   VITE_MASTER_ACCOUNT_PUBLIC_KEY=
+   VITE_PUBLIC_TORII=
+   VITE_PUBLIC_RPC=
+   ```
+   You can look at the documentation on how to deploy a dojo world here: https://book.dojoengine.org/tutorial/deploy-using-slot/main
+
+   
+      -And the API_KEYS part that has to be provided by the user and has to have this structure:
+   ```
+   VITE_OPENAI_API_KEY=
+   VITE_PINATA_JWT=
+   VITE_PINATA_URL=
+   VITE_CORS_PROXY=
    ```
 
-4. **Add .env File:**
+   All this information has to be added to the `.env` file in the root of the taleweaver-ts-main-v2 directory.
+   
+   Allow CORS-anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
-   Similar to the backend setup, an `.env` file is needed for the frontend. You can contact us to get the keys or add your own.
-
-5. **Start Development:**
+6. **Start Development:**
 
    To start the development environment, run:
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 This README provides a step-by-step guide on how to clone, set up the backend, and configure the frontend of the taleweaver-v2-gamejam project. Ensure you follow the instructions carefully to avoid setup errors.
