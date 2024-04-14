@@ -39,6 +39,7 @@ Follow these steps to set up the server:
 
    ```
    ARK_API_KEY=your_api_key_here
+   PINATA_JWT=your_api_key_here
    ```
 
    To start the server, run:
@@ -47,7 +48,7 @@ Follow these steps to set up the server:
    node src/server.js
    ```
 
-   *Note: This server will only allow access from `localhost:3001`. If the frontend is running on a different URL, please change this port in the `server.js` file on line 16.*
+   *Note: This server will only allow access from `localhost:5173`. If the frontend is running on a different URL, please change this port in the `server.js` file on line 15.*
 
 3. **Open a New Terminal and Navigate to the Project Root:**
 
@@ -55,7 +56,7 @@ Follow these steps to set up the server:
    cd taleweaver-ts-main-v2 && bun install
    ```
 
-4. **Add .env File and allow CORSanywhere:**
+4. **Add .env File:**
 
    Similar to the backend setup, an `.env` file is needed for the frontend. The .env of this part of the project is divided in two:
 
@@ -81,7 +82,6 @@ Follow these steps to set up the server:
 
    All this information has to be added to the `.env` file in the root of the taleweaver-ts-main-v2 directory.
    
-   Allow CORS-anywhere with this link: https://cors-anywhere.herokuapp.com/ in your browser.
 
 6. **Start Development:**
 
