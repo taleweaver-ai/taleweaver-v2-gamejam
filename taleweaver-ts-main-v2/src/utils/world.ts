@@ -36,7 +36,7 @@ export function useCreateWorld() {
       description: description,
       theme: theme,
       mode: mode,
-      dalleUrl: dalleUrl,
+      dalleUrl: `https://ipfs.io/ipfs/${dalleCid}`,
       avatars: avatars
     })
 

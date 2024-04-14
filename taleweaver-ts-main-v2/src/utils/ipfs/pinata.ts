@@ -42,26 +42,19 @@ export async function readFromPinata(cid: string) {
 }
 
 export async function uploadDalleToPinata(dalleUrl: string) {
-  const dalle = await axios.get(CORS_PROXY + dalleUrl, { 
-    responseType: "blob",
-    timeout: 30000,
-    
-  });
-  const imageBlob = new Blob([dalle.data], { type: 'image/jpeg' });
-
-  const imageFile = new File([imageBlob], '/tmp/image.jpg', { type: 'image/jpeg' });
-
-  const data = new FormData()
-  data.append("file", imageFile)
-
-  const response = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+  // Ahora, en lugar de apuntar a CORS_PROXY, apunta directamente al servidor
+  const response = await fetch(CORS_PROXY, { 
     method: "POST",
     headers: {
-      Authorization: `Bearer ${JWT}`,
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${JWT}`, // Asegúrate de que JWT es accesible aquí o manéjalo de otra manera
     },
-    body: data,
+    body: JSON.stringify({ dalleUrl }),
   });
-  if (response.status == 200) {
-    return await response.json().IpfsHash;
+  
+  if (response.status === 200) {
+    const { IpfsHash } = await response.json();
+    return IpfsHash;
   }
 }
+
