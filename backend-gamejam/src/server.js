@@ -9,11 +9,10 @@ dotenv.config();
 
 const app = express();
 
-
 // Usa cors para permitir todas las solicitudes cruzadas
 // Para un ambiente de producción, querrás configurar esto para permitir solo ciertos orígenes
 const corsOptions = {
-    origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3001', // Origen por defecto para desarrollo,poner la direccion en la que se este lanzando el frontend
+    origin: process.env.ALLOWED_ORIGIN || 'http://localhost:5173', // Origen por defecto para desarrollo,poner la direccion en la que se este lanzando el frontend
 };
 
 app.use(cors(corsOptions));
@@ -51,6 +50,42 @@ app.post('/nfts', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.post('/uploadImageToIPFS', async (req, res) => {
+    const { dalleUrl } = req.body; // Asume que `dalleUrl` es la URL de la imagen a subir
+    const JWT = process.env.PINATA_JWT; // Tu token JWT de Pinata
+
+    try {
+        // Obtiene la imagen usando fetch
+        const imageResponse = await fetch(dalleUrl);
+        if (!imageResponse.ok) throw new Error(`Error al recuperar la imagen: ${imageResponse.statusText}`);
+        const imageBlob = await imageResponse.blob();
+
+        // Prepara el archivo para subirlo a Pinata
+        const formData = new FormData();
+        formData.append("file", imageBlob, "image.jpg");
+
+        // Realiza la petición a Pinata para subir la imagen
+        const pinataResponse = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${JWT}`,
+            },
+            body: formData,
+        });
+
+        if (!pinataResponse.ok) throw new Error(`Error al subir a Pinata: ${pinataResponse.statusText}`);
+
+        const pinataData = await pinataResponse.json();
+
+        // Devuelve el hash de IPFS de la imagen subida
+        res.status(200).json({ IpfsHash: pinataData.IpfsHash });
+    } catch (error) {
+        console.error('Error uploading image to IPFS:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 const port = process.env.PORT || 3000;
 
